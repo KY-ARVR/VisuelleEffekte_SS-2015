@@ -1,0 +1,22 @@
+************************************************************************
+** NOTES                                                              **
+************************************************************************
+
+Kaveh Yousefi, 22.09.2015
+************************************************************************
+
+
+Notes on Installing
+========================================================================
+(1) Install XAMPP, if not present.
+(2) Copy the folder "VisuelleEffekte" into the XAMPP's "htdocs"
+    directory, for instance to:
+      C:\xampp\htdocs\VisuelleEffekte
+(3) Double click the link file "Shader Chooser" in the
+    "VisuelleEffekte" directory.
+
+
+Notes on Usage
+========================================================================
+EXTERNAL MODELS must reside in the subdirectory "models" to be loaded.
+TEXTURES        must reside in the subdirectory "textures" to be loaded.

@@ -1,0 +1,22 @@
+************************************************************************
+** FILE SOURCES                                                       **
+************************************************************************
+
+Kaveh Yousefi, 22.09.2015
+************************************************************************
+
+
+Sources for 3D models
+========================================================================
+  - Ding-Yun Chen, Xiao-Pei Tian, Yu-Te Shen and Ming Ouhyoung,
+    "On Visual Similarity Based 3D Model Retrieval",
+    Computer Graphics Forum (EUROGRAPHICS'03), Vol. 22, No. 3, pp. 223-232, Sept. 2003.
+      -> Web page: "http://3d.csie.ntu.edu.tw/~dynamic/database/index.html"
+  - Robin Bing-Yu Chen
+      -> Web page: "http://graphics.im.ntu.edu.tw/~robin/courses/cg03/model/"
+
+
+Sources for textures
+========================================================================
+  - TECFA
+      -> Web page: "http://tecfa.unige.ch/vrml/textures/srcbook/"
