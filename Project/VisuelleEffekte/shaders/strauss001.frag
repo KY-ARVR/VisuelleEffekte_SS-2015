@@ -137,7 +137,7 @@ void main (void)
   vec4  highlightBaseColor;
   float smoothness;
   float metalness;
-  float transparency;
+  float straussTransparency;
   float indexOfRefraction;
   float fresnelConstant;
   float shadowConstant;
@@ -153,7 +153,7 @@ void main (void)
   highlightBaseColor     = straussParameters.highlightBaseColor;
   metalness              = straussParameters.metalness;
   smoothness             = straussParameters.smoothness;
-  transparency           = straussParameters.transparency;
+  straussTransparency    = straussParameters.transparency;
   indexOfRefraction      = straussParameters.indexOfRefraction;
   fresnelConstant        = straussParameters.fresnelConstant;
   shadowConstant         = straussParameters.shadowConstant;
@@ -262,7 +262,7 @@ void main (void)
     
     metalnessSmoothnessTerm = (1.0 - metalness * smoothness);
     smoothnessCubed         = (smoothness * smoothness * smoothness);
-    smoothnessTranspTerm    = (1.0 - smoothnessCubed) * (1.0 - transparency);
+    smoothnessTranspTerm    = (1.0 - smoothnessCubed) * (1.0 - straussTransparency);
     diffuseTerm             = dotOfNormalAndLight
                               * metalnessSmoothnessTerm
                               * smoothnessTranspTerm;
@@ -277,7 +277,7 @@ void main (void)
     // Done by myself: Avoiding negative values.
     //dotOfNormalAndEye     = max (dotOfNormalAndEye, 0.0);
     
-    r                      = (1.0 - transparency) - smoothnessTranspTerm;
+    r                      = (1.0 - straussTransparency) - smoothnessTranspTerm;
     /* <!> IMPORTANT - FORMER SOURCE OF ERROR <!>
      *     Former source code used "dotOfNormalAndLight" instead of
      *     "fresnelOfNormalAndLight".

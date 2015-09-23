@@ -370,8 +370,8 @@
     this.emissiveColor     = COLOR_BLACK.slice ();
     this.specularColor     = COLOR_WHITE.slice ();
     this.specularIntensity = 1.0;
-    this.shininess         = 100.5;
-    this.enabled           = 1;
+    this.shininess         = 64.0;
+    this.enabled           =  1;
     this.type              = -1;
   };
   
@@ -488,7 +488,7 @@
     this.diffuseColor        = COLOR_BEIGE.slice ();
     this.roughness           = 0.5;
     this.diffuseTermFunction = 0;
-    this.useInterreflection  = false;
+    this.useInterreflection  = true;
     this.specularMaterial    = new SpecularMaterial ();
   };
   

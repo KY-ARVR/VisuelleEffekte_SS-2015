@@ -2763,6 +2763,35 @@ window.onload = function ()
   var specularComponentEmissive  = document.getElementById    ("specularComponentEmissiveColor");
   var specularComponentSpecular  = document.getElementById    ("specularComponentSpecularColor");
   
+  function updateSpecularComponentControlElements (specularMaterial)
+  {
+    setColorChooserRGBFromArray (specularComponentAmbient,  specularMaterial.ambientColor);
+    setColorChooserRGBFromArray (specularComponentDiffuse,  specularMaterial.diffuseColor);
+    setColorChooserRGBFromArray (specularComponentEmissive, specularMaterial.emissiveColor);
+    setColorChooserRGBFromArray (specularComponentSpecular, specularMaterial.specularColor);
+    
+    specularComponentShininess.value = specularMaterial.shininess;
+    
+    // Update specular material type radio buttons.
+    var specularTypes = document.getElementsByName ("specularMaterialType");
+    
+    for (var radiobuttonIndex = 0;
+             radiobuttonIndex < specularTypes.length;
+             radiobuttonIndex++)
+    {
+      var radiobutton = specularTypes[radiobuttonIndex];
+      
+      if (radiobutton.value == specularMaterial.type)
+      {
+        radiobutton.checked = true;
+      }
+      else
+      {
+        radiobutton.checked = false;
+      }
+    }
+  }
+  
   function setSpecularComponentShininess (shape, shininess)
   {
     shape.lommelSeeligerParameters.specularMaterial.shininess = shininess;
@@ -3108,7 +3137,7 @@ window.onload = function ()
   }
   
   
-  var orenNayarConfigBlock  = document.getElementById ("OrenNayarConfigBlock");
+  var orenNayarConfigBlock  = document.getElementById ("orenNayarConfigBlock");
   var orenNayarDiffuseColor = document.getElementById ("orenNayarDiffuseColor");
   var orenNayarRoughness    = document.getElementById ("orenNayarRoughness");
   
@@ -4613,36 +4642,6 @@ window.onload = function ()
     false
   );
   
-  
-  function updateSpecularComponentControlElements (specularMaterial)
-  {
-    setColorChooserRGBFromArray (specularComponentAmbient,  specularMaterial.ambientColor);
-    setColorChooserRGBFromArray (specularComponentDiffuse,  specularMaterial.diffuseColor);
-    setColorChooserRGBFromArray (specularComponentEmissive, specularMaterial.emissiveColor);
-    setColorChooserRGBFromArray (specularComponentSpecular, specularMaterial.specularColor);
-    
-    specularComponentShininess.value = specularMaterial.shininess;
-    
-    
-    // Update specular material type radio buttons.
-    var specularTypes = document.getElementsByName ("specularMaterialType");
-    
-    for (var radiobuttonIndex = 0;
-             radiobuttonIndex < specularTypes.length;
-             radiobuttonIndex++)
-    {
-      var radiobutton = specularTypes[radiobuttonIndex];
-      
-      if (radiobutton.value == specularMaterial.type)
-      {
-        radiobutton.checked = true;
-      }
-      else
-      {
-        radiobutton.checked = false;
-      }
-    }
-  }
   
   
   function updateControlElements ()
