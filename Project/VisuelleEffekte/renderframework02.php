@@ -1307,6 +1307,9 @@
         <button id="addSphereButton"
                 class="toolbarButton"
                 title="Add a sphere."></button>
+        <button id="addCuboidButton"
+                class="toolbarButton"
+                title="Add a cuboid."></button>
       </div>
       
       <div class="toolbarSection">

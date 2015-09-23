@@ -1332,6 +1332,121 @@ window.onload = function ()
     return sphereShape3D;
   }
   
+  
+  function addCuboid (width, height, depth)
+  {
+    var shape3D      = null;
+    var points       = null;
+    var pointIndices = null;
+    var geometry     = null;
+    var normals      = null;
+    var texCoords    = null;
+    
+    shape3D = new Shape3D ();
+    points  =
+    [
+      new Point3D (-width / 2.0,  height / 2.0,  depth / 2.0),  // 0 LUF
+      new Point3D (-width / 2.0, -height / 2.0,  depth / 2.0),  // 1 LDF
+      new Point3D ( width / 2.0, -height / 2.0,  depth / 2.0),  // 2 RDF
+      new Point3D ( width / 2.0,  height / 2.0,  depth / 2.0),  // 3 RUF
+      
+      new Point3D (-width / 2.0,  height / 2.0, -depth / 2.0),  // 4 LUB
+      new Point3D (-width / 2.0, -height / 2.0, -depth / 2.0),  // 5 LDB
+      new Point3D ( width / 2.0, -height / 2.0, -depth / 2.0),  // 6 RDB
+      new Point3D ( width / 2.0,  height / 2.0, -depth / 2.0)   // 7 RUB
+    ];
+    
+    pointIndices =
+    [
+      // Front
+      0, 1, 2, 2, 3, 0,
+      
+      // Left
+      4, 5, 1, 1, 0, 4,
+      
+      // Right
+      3, 2, 7, 7, 2, 6,
+      
+      // Top
+      0, 3, 7, 7, 4, 0,
+      
+      // Bottom
+      1, 5, 6, 6, 2, 1,
+      
+      // Back
+      4, 7, 6, 6, 5, 4
+    ];
+    
+    normals =
+    [
+      0.0, 0.0,  1.0,
+      0.0, 0.0,  1.0,
+      0.0, 0.0,  1.0,
+      0.0, 0.0,  1.0,
+      0.0, 0.0,  1.0,
+      0.0, 0.0,  1.0,
+      
+      -1.0, 0.0,  0.0,
+      -1.0, 0.0,  0.0,
+      -1.0, 0.0,  0.0,
+      -1.0, 0.0,  0.0,
+      -1.0, 0.0,  0.0,
+      -1.0, 0.0,  0.0,
+      
+      1.0, 0.0,  1.0,
+      1.0, 0.0,  1.0,
+      1.0, 0.0, -1.0,
+      1.0, 0.0, -1.0,
+      1.0, 0.0, -1.0,
+      1.0, 0.0,  1.0,
+      
+      0.0, 1.0,  0.0,
+      0.0, 1.0,  0.0,
+      0.0, 1.0,  0.0,
+      0.0, 1.0,  0.0,
+      0.0, 1.0,  0.0,
+      0.0, 1.0,  0.0,
+      
+      0.0, -1.0,  0.0,
+      0.0, -1.0,  0.0,
+      0.0, -1.0,  0.0,
+      0.0, -1.0,  0.0,
+      0.0, -1.0,  0.0,
+      0.0, -1.0,  0.0,
+      
+      0.0, 0.0, -1.0,
+      0.0, 0.0, -1.0,
+      0.0, 0.0, -1.0,
+      0.0, 0.0, -1.0,
+      0.0, 0.0, -1.0,
+      0.0, 0.0, -1.0
+    ];
+    
+    texCoords =
+    [
+      0.0, 1.0,  0.0, 0.0,  1.0, 0.0,  1.0, 1.0,
+      0.0, 1.0,  0.0, 0.0,  1.0, 0.0,  1.0, 1.0,
+      0.0, 1.0,  0.0, 0.0,  1.0, 0.0,  1.0, 1.0,
+      0.0, 1.0,  0.0, 0.0,  1.0, 0.0,  1.0, 1.0,
+      0.0, 1.0,  0.0, 0.0,  1.0, 0.0,  1.0, 1.0,
+      0.0, 1.0,  0.0, 0.0,  1.0, 0.0,  1.0, 1.0
+    ];
+    
+    geometry = new IndexedTriangleGeometry (points, pointIndices);
+    geometry.setNormalsFromFloatArray (normals);
+    geometry.setTextureCoordinatesFromFloatArray (texCoords);
+    
+    shape3D.setGeometry   (geometry);
+    shape3D.setAppearance (createDefaultAppearance ());
+    shape3D.setName       ("cuboid");
+    
+    renderer.addShape3D   (shape3D);
+    renderer.update ();
+    
+    return shape3D;
+  }
+  
+  
   var addSphereButton = document.getElementById ("addSphereButton");
   
   if (addSphereButton != null)
@@ -1342,6 +1457,21 @@ window.onload = function ()
       function (event)
       {
         addSphere ();
+      },
+      false
+    );
+  }
+  
+  var addCuboidButton = document.getElementById ("addCuboidButton");
+  
+  if (addCuboidButton != null)
+  {
+    addCuboidButton.addEventListener
+    (
+      "click",
+      function (event)
+      {
+        addCuboid (1.0, 1.0, 1.0);
       },
       false
     );

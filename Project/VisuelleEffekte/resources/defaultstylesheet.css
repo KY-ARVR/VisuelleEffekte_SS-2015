@@ -261,3 +261,8 @@ h3
 {
   background : white url("Icon_sphere.png") no-repeat center center;
 }
+
+#addCuboidButton
+{
+  background : white url("Icon_cuboid.png") no-repeat center center;
+}
